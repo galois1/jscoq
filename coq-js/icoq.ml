@@ -74,7 +74,8 @@ let default_warning_flags = "-notation-overridden"
 (**************************************************************************)
 let coq_init opts =
 
-  if opts.debug then Coqinit.set_debug ();
+  (* XXX fixme for 8.14 *)
+  (* if opts.debug then Coqinit.set_debug (); *)
 
   coq_vm_trap ();
 
@@ -114,13 +115,13 @@ let coq_init opts =
 let new_doc opts =
   let doc_type = match opts.mode with
     | Interactive -> let dp = Libnames.dirpath_of_string opts.top_name in
-                     Stm.Interactive (Stm.TopLogical dp)
+                     Stm.Interactive (Coqargs.TopLogical dp)
     | Vo ->          Stm.VoDoc opts.top_name
   in
   let ndoc = { Stm.doc_type
-             ; injections = List.map (fun x -> Stm.RequireInjection x) opts.require_libs
-             ; ml_load_path = []
-             ; vo_load_path = opts.vo_path
+             ; injections = List.map (fun x -> Coqargs.RequireInjection x) opts.require_libs
+             (* ; ml_load_path = []
+              * ; vo_load_path = opts.vo_path *)
              ; stm_options = Stm.AsyncOpts.default_opts
              } in
   let ndoc, nsid = Stm.new_doc ndoc in
@@ -210,7 +211,9 @@ let compile_vo ~doc vo_out_fn =
 (** [set_debug t] enables/disables debug mode  *)
 let set_debug debug =
   Printexc.record_backtrace debug;
-  Flags.debug := debug
+  ()
+  (* XXX fixme 8.14 *)
+  (* Flags.debug := debug *)
 
 let version =
-  Coq_config.version, Coq_config.date, Coq_config.compile_date, Coq_config.caml_version, Coq_config.vo_version
+  Coq_config.version, Coq_config.caml_version, Coq_config.vo_version

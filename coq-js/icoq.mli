@@ -60,7 +60,7 @@ val coq_init : coq_opts -> unit
 val new_doc : doc_opts -> Stm.doc * Stateid.t
 
 (** [version] returns miscellaneous version information *)
-val version : string * string * string * string * int32
+val version : string * string * int32
 
 val mode_of_stm : doc:Stm.doc -> Stateid.t -> in_mode
 val context_of_stm : doc:Stm.doc -> Stateid.t -> (Evd.evar_map * Environ.env)

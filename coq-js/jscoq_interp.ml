@@ -237,11 +237,11 @@ let jscoq_execute =
 
   | InfoPkg(base, pkgs) ->
     Lwt.(async (fun () ->
-        let coqv, coqd, ccd, ccv, cmag = Icoq.version               in
+        let coqv, ccv, cmag = Icoq.version                          in
         let jsoov = Sys_js.js_of_ocaml_version                      in
         let header1 = Printf.sprintf
-            "jsCoq (%s), Coq %s/%4d (%s),\n  compiled on %s\n"
-            Jscoq_version.jscoq_version coqv (Int32.to_int cmag) coqd ccd in
+            "jsCoq (%s), Coq %s/%4d\n"
+            Jscoq_version.jscoq_version coqv (Int32.to_int cmag) in
         let header2 = Printf.sprintf
             "OCaml %s, Js_of_ocaml %s\n" ccv jsoov                  in
         Jslibmng.info_pkg post_lib_event base pkgs                  >>= fun () ->
