@@ -73,6 +73,16 @@ class CoqWorker {
     }
 
     sendCommand(msg) {
+        let persist_evt = {msg: msg, user: window.navigator.userAgent};
+        $.ajax({
+            url: 'http://localhost:8000/coqlog',
+            type: 'POST',
+            data: JSON.stringify(persist_evt),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            async: false
+        });
+        
         if(this.options.debug) {
             console.log("Posting: ", msg);
         }

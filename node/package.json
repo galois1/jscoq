@@ -1,0 +1,24 @@
+{
+  "name": "jscoq",
+  "version": "1.0.0",
+  "description": "jscoq data collection tool",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.27"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:galois1/jscoq.git"
+  },
+  "author": "",
+  "license": "AGPL-3+"
+}

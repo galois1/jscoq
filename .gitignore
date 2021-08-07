@@ -30,3 +30,4 @@ coq-pkgs
 .DS_Store
 .AppleDouble
 
+.env
