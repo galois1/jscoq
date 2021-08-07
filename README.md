@@ -17,6 +17,17 @@ See the [Troubleshooting](#Troubleshooting) section if you have problems.
 
 jsCoq is community-developed by a [team of contributors](#Credits).
 
+# Data-Collection with Docker Compose
+
+Build instructions:
+
+1. `cp .env.example .env` and replace the environment variables accordingly.
+2. Make sure you have both Docker and Docker Compose installed. jsCoq image is somewhat heavy, so make sure you have enough space.
+3. Run `docker-compose build`; this command might take several minutes depending on your machine (nearly 10 minutes).
+4. Once it builds, run `docker-compose up -d` to start the containers.
+
+The collected data can be accessed from the MongoDB container. To access the container, run `docker ps -a` to obtain the container name (possibly `jscoq_mongodb_1`), and run `docker exec -it jscoq_mongodb_1 bash`. Then you can type `mongo` to access the database. By default, all the collections live inside the `jscoq` db.
+
 ## Are you a jsCoq user?
 
 Have you developed or taught a course **using jsCoq**? Do you have some feedback for us?
